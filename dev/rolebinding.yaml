@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-psp
+subjects:
+- kind: Group
+  name: system:serviceaccounts:argocd
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: argocd-psp
+  apiGroup: rbac.authorization.k8s.io      

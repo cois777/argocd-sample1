@@ -21,30 +21,3 @@ spec:
     automated:
       selfHeal: true
       prune: true
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: argocd-psp
-rules:
-- apiGroups:
-  - policy
-  resourceNames:
-  - privileged
-  resources:
-  - podsecuritypolicies
-  verbs:
-  - use
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: argocd-psp
-subjects:
-- kind: Group
-  name: system:serviceaccounts:argocd
-  apiGroup: rbac.authorization.k8s.io
-roleRef:
-  kind: Role
-  name: argocd-psp
-  apiGroup: rbac.authorization.k8s.io      
